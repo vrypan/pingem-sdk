@@ -21,7 +21,8 @@ import { sdk } from '@farcaster/frame-sdk';
 
 const pingem = new Pingem();
 await sdk.actions.ready();
-await pingem.init(sdk, 'your-mini-app-domain');
+// Use your domain, i.e. without https://
+await pingem.init(sdk, 'your-mini-app-domain.com');
 await sdk.actions.addFrame();
 await pingem.ping('view');
 ```
@@ -37,7 +38,8 @@ Modify it like this:
 
   const pingem = new Pingem(); // Create a new instance
   await sdk.actions.ready();
-  await pingem.init(sdk, 'your-mini-app-domain'); // After the sdk is initailized, init pingem
+  // Use your domain, i.e. without https://
+  await pingem.init(sdk, 'your-mini-app-domain.com'); // After the sdk is initailized, init pingem
   await pingem.ping('view'); // Send data to the pingem service
 </script>
 ```
