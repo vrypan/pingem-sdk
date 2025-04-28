@@ -2,12 +2,17 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
   entry: ['src/index.ts'],
-  format: ['esm', 'cjs', 'iife'], // ESM, CommonJS, and browser IIFE bundle
-  globalName: 'PingemSDK', // global window.PingemSDK when loaded via <script>
+  format: ['esm', 'cjs', 'iife'],
+  globalName: 'PingemSDK',
   sourcemap: true,
   clean: true,
-  dts: true, // Generate .d.ts types
-  target: 'esnext', // modern output
+  dts: true,
+  target: 'esnext',
   minify: true,
+  outExtension({ format }) {
+    if (format === 'esm') return { js: '.mjs' };
+    if (format === 'cjs') return { js: '.cjs' };
+    return { js: '.js' };
+  },
 });
 
