@@ -66,18 +66,18 @@ export class Pingem {
     }
   }
 
-  private async fetchSafe(url: string, options: any) {
-    if (typeof fetch !== "undefined") {
-      // In browsers and Node 18+ (with native fetch)
+  private async fetchSafe(url: string, options: RequestInit) {
+    if (typeof window !== "undefined" && typeof fetch !== "undefined") {
+      // Browser environment
       return fetch(url, options);
     }
 
-    // In Node <18 only
     if (typeof process !== "undefined" && process.versions?.node) {
-      const { fetch: undiciFetch } = await import("undici");
-      return undiciFetch(url, options as import("undici").RequestInit);
+      // Node environment
+      const { fetchNode } = await import("./fetch-node.js"); // note the ".js" after bundling
+      return fetchNode(url, options);
     }
 
-    throw new Error("No fetch implementation available");
+    throw new Error("No fetch implementation available.");
   }
 }
