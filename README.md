@@ -26,16 +26,18 @@ await sdk.actions.addFrame();
 await pingem.ping('view');
 ```
 
-If you have a static website
+If you have a static website, you probably import the frame-sdk.
+
+Modify it like this:
 
 ```javascript
 <script type="module">
-  import { sdk } from '@farcaster/frame-sdk';
-  import { Pingem } from 'https://esm.sh/pingem-sdk@0.1.3';
+  import { sdk } from '@farcaster/frame-sdk'; 
+  import { Pingem } from 'https://esm.sh/pingem-sdk'; // Import pingem-sdk
 
-  const pingem = new Pingem();
+  const pingem = new Pingem(); // Create a new instance
   await sdk.actions.ready();
-  await pingem.init(sdk, 'your-mini-app-domain');
-  await pingem.ping('view');
+  await pingem.init(sdk, 'your-mini-app-domain'); // After the sdk is initailized, init pingem
+  await pingem.ping('view'); // Send data to the pingem service
 </script>
 ```
