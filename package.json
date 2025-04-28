@@ -1,9 +1,15 @@
 {
   "name": "pingem-sdk",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "Lightweight event tracking for Farcaster Mini Apps",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc",

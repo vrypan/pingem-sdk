@@ -1,0 +1,1 @@
+export { Pingem } from './pingem';

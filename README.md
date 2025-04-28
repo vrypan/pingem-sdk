@@ -25,3 +25,17 @@ await pingem.init(sdk, 'your-mini-app-domain');
 await sdk.actions.addFrame();
 await pingem.ping('view');
 ```
+
+If you have a static website
+
+```javascript
+<script type="module">
+  import { sdk } from '@farcaster/frame-sdk';
+  import { Pingem } from 'https://esm.sh/pingem-sdk@0.1.3';
+
+  const pingem = new Pingem();
+  await sdk.actions.ready();
+  await pingem.init(sdk, 'your-mini-app-domain');
+  await pingem.ping('view');
+</script>
+```
