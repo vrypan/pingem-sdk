@@ -45,7 +45,6 @@
     "access": "public"
   },
   "devDependencies": {
-    "@types/node-fetch": "^2.6.12",
     "tsup": "^7.2.0",
     "tsx": "^4.0.0",
     "typescript": "^5.8.3",
@@ -53,7 +52,6 @@
     "vitest": "^1.0.0"
   },
   "dependencies": {
-    "node-fetch": "^3.3.2",
-    "undici": "^7.8.0"
+    "cross-fetch": "^4.0.0"
   }
 }

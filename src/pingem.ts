@@ -55,7 +55,8 @@ export class Pingem {
     };
 
     try {
-      await this.fetchSafe(this.endpoint, {
+      const crossFetch = (await import("cross-fetch")).default;
+      await crossFetch(this.endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -64,20 +65,5 @@ export class Pingem {
     } catch (err) {
       console.error("Pingem: Failed to send ping", err);
     }
-  }
-
-  private async fetchSafe(url: string, options: RequestInit) {
-    if (typeof window !== "undefined" && typeof fetch !== "undefined") {
-      // Browser environment
-      return fetch(url, options);
-    }
-
-    if (typeof process !== "undefined" && process.versions?.node) {
-      // Node environment
-      const { fetchNode } = await import("./fetch-node.js"); // note the ".js" after bundling
-      return fetchNode(url, options);
-    }
-
-    throw new Error("No fetch implementation available.");
   }
 }
