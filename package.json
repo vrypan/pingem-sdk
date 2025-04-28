@@ -1,29 +1,42 @@
 {
   "name": "pingem-sdk",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "Lightweight event tracking for Farcaster Mini Apps",
-  "main": "./dist/index.js",
-  "module": "./dist/index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.global.js",
+  "jsdelivr": "./dist/index.global.js",
   "exports": {
     ".": {
-      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "default": "./dist/index.global.js",
       "types": "./dist/index.d.ts"
     }
   },
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "tsc",
+    "build": "tsup",
     "test": "vitest",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs"
   },
+  "files": [
+    "dist",
+    "src",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ],
   "keywords": [
     "analytics",
     "farcaster",
     "tracking",
     "sdk",
-    "frames"
+    "frames",
+    "pingem",
+    "farcaster-miniapps"
   ],
   "author": "Your Name",
   "license": "MIT",
@@ -33,7 +46,9 @@
   },
   "devDependencies": {
     "@types/node-fetch": "^2.6.12",
+    "tsup": "^7.2.0",
     "tsx": "^4.0.0",
+    "typescript": "^5.8.3",
     "vitepress": "^1.0.0",
     "vitest": "^1.0.0"
   },
